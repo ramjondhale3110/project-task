@@ -1,0 +1,32 @@
+@import url('./font.css');
+
+:root {
+    --roboto-font: 'Poppins';
+    --open-sans-font: 'open-sans';
+    --roboto-font: 'Roboto';
+}
+
+.defaultAlert {
+    display: block;
+    padding: 8px 8px;
+    color: #e74c3c;
+    font-size: 16px;
+    border: 1px solid #c0392b;
+    text-align: center;
+    border-radius: 3px;
+    font-family: var(--roboto-font);
+    margin-bottom: 3px;
+    display: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
