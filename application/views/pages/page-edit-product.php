@@ -5,6 +5,7 @@
                 <div class="defaultAlert"></div>
                 <form method="POST" autocomplete="off" action="" id="productForm">
                     <div class="row">
+                        <input type="hidden" name="productId">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Select Category</label>
@@ -68,6 +69,7 @@
                                 <input type="text" class="form-control" name="productPayableAmount" placeholder="Payable Discount Amount" readonly value="<?= $productDetail->roductPayableAmount ?>">
                             </div>
                         </div>
+                        <input type="hidden" name="productId" value="<?= $productDetail->id ?>">
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                 </form>
@@ -142,7 +144,7 @@
             event.preventDefault();
             var formData = new FormData($('#productForm')[0]);
             $.ajax({
-                url: "<?= base_url('home/submitProductDetail') ?>",
+                url: "<?= base_url('home/updateProductDetail') ?>",
                 data: formData,
                 type: 'POST',
                 processData: false,

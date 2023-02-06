@@ -297,4 +297,55 @@ class Home extends CI_Controller
 		$this->Home_model->insertProduct($formdata);
 		echo 'success';
 	}
+
+	public function updateProductDetail()
+	{
+		if (empty($_POST['categoryId'])) {
+			echo 'select category !!!';
+			return false;
+		}
+		if (empty($_POST['subcategoryId'])) {
+			echo 'select sub category !!!';
+			return false;
+		}
+		if (empty($_POST['productTitle'])) {
+			echo 'enter product title !!!';
+			return false;
+		}
+		if (empty($_POST['productDescription'])) {
+			echo 'enter product description !!!';
+			return false;
+		}
+		if (empty($_POST['productAmount'])) {
+			echo 'enter product amount !!!';
+			return false;
+		}
+		if (empty($_POST['productDiscType'])) {
+			echo 'enter product discount type !!!';
+			return false;
+		}
+		if (empty($_POST['productDiscAmount'])) {
+			echo 'enter product discount amount !!!';
+			return false;
+		}
+
+		$formdata = array(
+			'cat_IdFk' => $_POST['categoryId'],
+			'subcat_IdFk' => $_POST['subcategoryId'],
+			'productTitle' => $_POST['productTitle'],
+			'productDescription' => $_POST['productDescription'],
+			'productAmount' => $_POST['productAmount'],
+			'productDiscType' => $_POST['productDiscType'],
+			'productDiscAmount' => $_POST['productDiscAmount'],
+			'roductPayableAmount' => $_POST['productPayableAmount'],
+		);
+		$this->Home_model->updateProduct($formdata, array('id' => $_POST['productId']));
+		echo 'success';
+	}
+
+	public function deleteProduct()
+	{
+		$this->Home_model->deleteProduct(array('id' => $_POST['productId']));
+		echo 'success';
+	}
 }

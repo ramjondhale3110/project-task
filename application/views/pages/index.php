@@ -38,7 +38,7 @@
                                     <td><?= $productDetail->roductPayableAmount ?></td>
                                     <td>
                                         <a class="btn btn-primary" href="<?= base_url('edit-product/') . $productDetail->id ?>"><i class="fa fa-pencil-alt"></i></a>
-                                        <button class="btn btn-danger deleteBtn" data-subcategory-id="<?= $productDetail->id ?>"><i class="fas fa-trash"></i></button>
+                                        <button class="btn btn-danger deleteBtn" data-product-id="<?= $productDetail->id ?>"><i class="fas fa-trash"></i></button>
                                     </td>
                                 </tr>
                         <?php }
@@ -54,6 +54,22 @@
 
 <script>
     $(document).ready(function() {
-
+        $(document).on('click', '.deleteBtn', function() {
+            let productId = $(this).data('product-id');
+            if (confirm('Delete the record ???')) {
+                $.ajax({
+                    url: "<?= base_url('home/deleteProduct') ?>",
+                    method: 'POST',
+                    data: {
+                        productId: productId
+                    },
+                    success: function(response) {
+                        if (response == 'success') {
+                            location.reload();
+                        }
+                    }
+                });
+            }
+        });
     });
 </script>

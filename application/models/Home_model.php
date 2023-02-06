@@ -91,4 +91,16 @@ class Home_model extends CI_Model
         $result = $this->db->get();
         return $result->result();
     }
+
+    public function updateProduct($formdata, $where)
+    {
+        $this->db->where($where);
+        $this->db->update('producttbl', $formdata);
+    }
+
+    public function deleteProduct($where)
+    {
+        $this->db->where($where);
+        $this->db->delete('producttbl');
+    }
 }
